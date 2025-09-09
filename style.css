@@ -1,0 +1,17 @@
+import re
+
+# Função para extrair as palavras "tudo" e "rosa"
+def extrair_palavras_tudo_rosa(texto):
+    # Lista com as palavras a serem extraídas
+    palavras_alvo = ['tudo', 'rosa']
+    
+    # Criar uma expressão regular para encontrar as palavras alvo
+    padrao = r'\b(?:' + '|'.join(map(re.escape, palavras_alvo)) + r')\b'
+    
+    # Encontrar todas as palavras correspondentes
+    return re.findall(padrao, texto.lower())  # Usando .lower() para não diferenciar maiúsculas de minúsculas
+
+# Exemplo de uso
+texto = "Tudo é rosa, tudo é bonito. O mundo é tudo de rosa."
+palavras_extraidas = extrair_palavras_tudo_rosa(texto)
+print("Palavras extraídas:", palavras_extraidas)
